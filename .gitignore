@@ -4,7 +4,7 @@
 #no .db files
 *.db
 
-# no teraget directory
+# no target directory
 /target
 
 #no bin directory
