@@ -1,0 +1,11 @@
+#no .log files
+*.log
+
+#no .db files
+*.db
+
+# no teraget directory
+/target
+
+#no bin directory
+/bin
