@@ -1,6 +1,6 @@
 //Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них
 import java.util.Scanner;
-public class OT1_4 {
+public class OT1_7 {
     public static void main(String[] args) {
         int size;
         Scanner s = new Scanner(System.in);

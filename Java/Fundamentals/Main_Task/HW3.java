@@ -1,7 +1,7 @@
 //Вывести заданное количество случайных чисел с переходом и без перехода на новую строку
 import java.util.Scanner;
 import java.util.Random;
-public class HW3 {
+public class Task3 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Random random = new Random();
