@@ -1,6 +1,6 @@
 //Отобразить в окне консоли аргументы командной строки в обратном порядке
 import java.util.Scanner;
-public class HW2 {
+public class Task2 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input string: ");
