@@ -2,7 +2,7 @@ package by.epam.cleancode.planes;
 import java.util.Objects;
 
 abstract public class Plane {
-    String model;
+    private String model;
     private int maxSpeed;
     private int maxFlightDistance;
     private int maxLoadCapacity;
@@ -26,9 +26,8 @@ abstract public class Plane {
         return maxFlightDistance;
     }
 
-    public int getMinLoadCapacity() {
-        int result = this.maxLoadCapacity;
-        return result;
+    public int getMaxLoadCapacity() {
+        return this.maxLoadCapacity;
     }
 
     @Override
