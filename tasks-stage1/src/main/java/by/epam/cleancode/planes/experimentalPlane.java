@@ -49,4 +49,5 @@ public class ExperimentalPlane extends Plane {
                 ", type=" + type + ", classification level=" + classificationLevel +
                         '}');
     }
+
 }
