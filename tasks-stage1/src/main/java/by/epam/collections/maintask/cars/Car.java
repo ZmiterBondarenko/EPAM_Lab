@@ -5,9 +5,9 @@ public abstract class Car {
     private String model;
     private String carID;
     private float fuelConsumption;
-    protected double price;
+    private double price;
     private int maxSpeed;
-    protected int maxPassengers;
+    private int maxPassengers;
 
     public Car(String brand, String model, String carID, float fuelConsumption, double price, int maxSpeed, int maxPassengers) {
         this.brand = brand;
