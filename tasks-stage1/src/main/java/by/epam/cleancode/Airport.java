@@ -3,7 +3,7 @@ import by.epam.cleancode.models.MilitaryType;
 import by.epam.cleancode.planes.MilitaryPlane;
 import by.epam.cleancode.planes.PassengerPlane;
 import by.epam.cleancode.planes.Plane;
-import by.epam.cleancode.planes.experimentalPlane;
+import by.epam.cleancode.planes.ExperimentalPlane;
 import java.util.*;
 
 public class Airport {
@@ -63,14 +63,14 @@ public class Airport {
 
     }
 
-    public List<experimentalPlane> getExperimentalPlanes() {
-        List<experimentalPlane> experimentalPlanes = new ArrayList<>();
+    public List<ExperimentalPlane> getExperimentalPlanes() {
+        List<ExperimentalPlane> ExperimentalPlanes = new ArrayList<>();
         for (Plane plane : planes) {
-            if (plane instanceof experimentalPlane) {
-                experimentalPlanes.add((experimentalPlane) plane);
+            if (plane instanceof ExperimentalPlane) {
+                ExperimentalPlanes.add((ExperimentalPlane) plane);
             }
         }
-        return experimentalPlanes;
+        return ExperimentalPlanes;
     }
 
     public Airport sortByMaxDistance() {
@@ -94,7 +94,7 @@ public class Airport {
     public Airport sortByMaxLoadCapacity() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane o1, Plane o2) {
-                return o1.getMinLoadCapacity() - o2.getMinLoadCapacity();
+                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
             }
         });
         return this;
