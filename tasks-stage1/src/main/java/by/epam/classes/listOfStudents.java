@@ -1,5 +1,5 @@
 package by.epam.classes;
-public class listOfStudents {
+public class ListOfStudents {
     public static void main(String[] args) {
         StudentsList newList = new StudentsList();
         newList.addStudents(new Students("Ivanov", "Alexander", "Petrovich", "23.04.2000", "Gomel, Sovetskaya str, 18-20", "1234567", "ET", "2", "ET-21"));
