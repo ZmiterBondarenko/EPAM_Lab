@@ -17,27 +17,18 @@ class ReadDirectory {
     static void getTree(String path) throws IncorectPathException
     {
         File mainPath = new File(path);
-           if (mainPath.exists() && mainPath.isDirectory()) {
-               fileTree.add(path.substring(path.lastIndexOf('\\') + 1));
-           } else if (mainPath.exists() && mainPath.getName().endsWith("txt")) {
-               mainPath = new File(mainPath.getPath().substring(0, mainPath.getPath().lastIndexOf('\\') + 1));
-               isTxt = true;
-               System.out.println("You enter path to .txt file \n");
-           }
-
-       else {
-               throw new IncorectPathException("Please, enter correct path to folder or to .txt file");
-           }
-
-        File[] files = mainPath.listFiles();
-        readFilesTree(sortTreeFile(files), 0);
-
-        if ((!isTxt) && (files!=null)) {
-            for (String s : fileTree) {
-                System.out.println(s);
+        if (mainPath.exists() && mainPath.isDirectory()) {
+            fileTree.add(path.substring(path.lastIndexOf('\\') + 1));
+            File[] files = mainPath.listFiles();
+            readFilesTree(sortTreeFile(files), 0);
+            if (files!=null) {
+                for (String s : fileTree) {
+                    System.out.println(s);
+                }
             }
-        }
-        else if (isTxt)  {
+        } else if (mainPath.exists() && mainPath.getName().endsWith("txt")) {
+            isTxt = true;
+            fileTree = fileReader(path);
             for (String s : fileTree) {
                 if (s.contains(directoryTab)) {
                     directoryCounter += 1;
@@ -48,7 +39,6 @@ class ReadDirectory {
                 }
                 System.out.println(s);
             }
-
             System.out.println();
 
             if (fileCounter != 0)
@@ -59,9 +49,23 @@ class ReadDirectory {
                 System.out.println("Average number of files: " + fileCounter / directoryCounter);
         }
         else {
-            System.out.println("The selected \"" + fileTree.get(0) + "\" folder is Empty");
+            throw new IncorectPathException("Please, enter correct path to folder or to .txt file");
         }
         fileWriter(PATH_FOR_OUTPUT);
+    }
+
+    private static List<String> fileReader(String path){
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
+            while ((line = bufferedReader.readLine()) != null) {
+                fileTree.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileTree;
     }
 
     private static void fileWriter(String outputFile) {
@@ -95,7 +99,7 @@ class ReadDirectory {
 
 
     private static void readFilesTree(File[] files, int level) {
-        final String TAB = new String(new char[level]).replace("\0", "   ");
+        final String TAB = new String(new char[level]).replace("\0", "\t");
         for (File file : files) {
             if (file.isFile()) {
                 if (level != 0) {
