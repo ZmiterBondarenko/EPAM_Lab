@@ -14,4 +14,9 @@ public class Faculty {
     public void setFacultyName(String facultyName) {
         this.facultyName = facultyName;
     }
+
+   @Override
+    public String toString() {
+        return facultyName;
+    }
 }
